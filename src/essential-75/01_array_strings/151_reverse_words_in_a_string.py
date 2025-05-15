@@ -20,3 +20,11 @@ class Solution:
         words = [w for w in words if w != ""]
         
         return " ".join(words)
+    
+
+# 2025/05/14
+# class Solution:
+#     def reverseWords(self, s: str) -> str:
+#         slist = s.split(' ')
+#         slist.reverse()
+#         return ' '.join([x for x in slist if x != ''])
