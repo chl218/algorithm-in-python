@@ -43,28 +43,21 @@ Constraints:
     -1000 <= nums[i] <= 1000
 
 """
+
+# 2025/06/04
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
         
-        n = len(nums)
-        lsum = 0
-        rsum = sum(nums[1:])
-        pivot = 0
-        
-        if rsum == 0:
-            return 0
-        else:
-            rsum -= nums[1]
-        
-        for i in range(1, n-1):
-         
-            lsum += nums[i-1]        
-            if lsum == rsum:
+        totalSum = sum(nums)
+        prefixSum = 0
+
+        for i in range(len(nums)):
+
+            pivot = prefixSum
+            prefixSum += nums[i]
+            totalSum -= nums[i]
+
+            if pivot == totalSum:
                 return i
-            else:
-                rsum -= nums[i+1]
-      
-        if sum(nums[:-1]) == 0:
-            return n-1
 
         return -1
